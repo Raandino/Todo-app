@@ -13,7 +13,7 @@ const App = (props) => {
                 <AsyncRoute path='/login'
                 getComponent={()=> import('./pages/LoginPage').then(module => module.default)}></AsyncRoute>
                  <AsyncRoute path='/'
-                getComponent={()=> import('./pages/LoginPage').then(module => module.default)}></AsyncRoute>
+                getComponent={()=> import('./pages/TodoPage').then(module => module.default)}></AsyncRoute>
             </Router>
         </Fragment>
         
