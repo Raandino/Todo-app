@@ -4,14 +4,16 @@ import { Button } from 'antd/lib/button/button';
 
 
 const Navbar = (props) => {
-    return (<nav>
-        <Button type='pri'>
+    return (
+    <nav>
+        <Button type='primary'>
             <Link activeClassName="active" href="/"> Todo page</Link>
         </Button>
         <Button>
             <Link activeClassName="active" href="/login"> Login page</Link>
         </Button>
-    </nav>)
+    </nav>
+    )
 }
 
 export default Navbar

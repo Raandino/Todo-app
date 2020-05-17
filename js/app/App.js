@@ -10,10 +10,12 @@ const App = (props) => {
         <Fragment>
             <Navbar></Navbar>
             <Router>
+                {/** Ruta para la Pagina donde se escriben los todo */}
                 <AsyncRoute path='/login'
                 getComponent={()=> import('./pages/LoginPage').then(module => module.default)}></AsyncRoute>
+                {/** Ruta para la Pagina donde se escriben los Todos */}
                  <AsyncRoute path='/'
-                getComponent={()=> import('./pages/LoginPage').then(module => module.default)}></AsyncRoute>
+                getComponent={()=> import('./pages/TodoPage').then(module => module.default)}></AsyncRoute>
             </Router>
         </Fragment>
         
