@@ -1,13 +1,5 @@
 import {h , render } from 'preact'
-
-const App = ( props ) => { 
-
-    return (
-        <div class='text-2xl'>
-            Hello World
-        </div>
-    )
-}
+import App from './app/App'
 
 const root = document.getElementById('app')
 render(<App></App>,root)
