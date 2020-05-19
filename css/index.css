@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.bg-red {
+    background-color: red;
+}
