@@ -2,7 +2,7 @@ import  { h, Fragment } from 'preact'
 import {useState} from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
 
-import TodoItems from '../components/test'
+import TodoItems from '../components/TodoItems'
 
 
 
