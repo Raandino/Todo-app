@@ -5,6 +5,8 @@ import {h , render } from 'preact'
 import App from './app/App'
 import 'antd/dist/antd.css'
 
+import '../css/index.css';
+
 
 const root = document.getElementById('app')
 render(<App></App>,root)

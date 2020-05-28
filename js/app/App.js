@@ -7,6 +7,7 @@ const App = (props) => {
 
     return ( 
 
+        
         <Fragment>
             <Navbar></Navbar>
             <Router>
@@ -19,7 +20,7 @@ const App = (props) => {
             </Router>
         </Fragment>
         
-    )
+    );
 }
 
 export default App

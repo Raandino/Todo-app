@@ -6,6 +6,7 @@ import TodoItems from '../components/TodoItems'
 
 
 
+
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
     const [openModal, setOpenModal] = useState(false)
@@ -37,6 +38,7 @@ const TodoPage = (props) => {
     <Fragment>
         <h1> Todo Page</h1>
         <Button onClick={toggleForm}> Add Todo</Button>
+        
         <Modal title='Add Form'
             visible={openModal}
             onCancel={toggleForm}
@@ -61,7 +63,12 @@ const TodoPage = (props) => {
                     </Form.Item>
                 </Form>
         </Modal>
+
         <TodoItems todos={todoItems}></TodoItems>
+
+       
+           
+
     </Fragment>
 
 

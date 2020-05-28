@@ -1,8 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 
 .bg-red {
     background-color: red;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+#login{
+    color: white;
+    box-shadow: 5px 5px 5px 5px #141E30;
+    width: 500px;
+  
+    border-radius: 5%;
+}
+
+#login label{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#log{
+    padding: 20px 50px 30px;
+}
+
+#header{
+    text-align: center;
+    background-color: #243B55;
+    border-radius: 2%;
+}
+
+#header a{
+    margin: 0 25px;
+    font-size: 20px;
+    font-weight: bold;
+    -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+#header a:active{
+    color: black;
+}
+
+#header a:hover{
+    font-size: 22px;
+    transition: .2s;
+}
+
+#cuenta{
+    color: white;
+}
+
+button{
+    color: black;
+}
+
+#boton{
+    background-color: #448FA3;
+    border:none;
+
+    font-size: 20px;
 }
