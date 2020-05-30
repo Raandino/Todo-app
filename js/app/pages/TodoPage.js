@@ -3,48 +3,53 @@ import {useState} from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
 
 import TodoItems from '../components/TodoItems'
-
+import { useModal } from '../hooks'
 
 
 
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
-    const [openModal, setOpenModal] = useState(false)
+    console.log('use State')
+    console.log(useModal())
+    const [showModal, openModal, closeModal] = useModal()
     const [form] = Form.useForm()
+
+
     const addTodo = e => {
         // Gets Raw Data from the Form
-        const todoRawValues = form.getFieldsValue()
         // Transform the Date into usable format
-       const todo = {
-           todo: todoRawValues.todo,
-           descripcion: todoRawValues.descripcion,
-           date: todoRawValues.date.format('YYYY-MM-DD')
-       }
+       const todo = form.getFieldsValue()
+          
+       
        console.log(todo)
        // Adds the Todo Item to the array
-       setTodoItems([...todoItems, todo])
+    
        // Resets Form
+       console.log(form)
         form.resetFields()
         // Closes the Form
-        toggleForm()
+       closeModal()
+       setTodoItems([...todoItems, todo])
     }
     
-    const toggleForm = e => {
-        setOpenModal(!openModal)
-    }
-
+   
+    console.log('Todo', todoItems)
+    console.log('Show Modal', showModal)
  
 
     return (
     <Fragment>
         <h1> Todo Page</h1>
-        <Button id="addtodo" onClick={toggleForm}> Add Todo</Button>
+        <Button id="addtodo" onClick={openModal}> Add Todo</Button>
         
         <Modal id="modal" title='Add Form'
-            visible={openModal}
-            onCancel={toggleForm}
+            visible={(()=> {
+                console.log('Show Modal Add Form', showModal)
+               return showModal
+            })()}
+            onCancel={closeModal}
             footer={[
-                <Button onClick={toggleForm} >
+                <Button onClick={closeModal} >
                     Cancel
                 </Button>,
                 <Button onClick={addTodo}>Submit</Button>
