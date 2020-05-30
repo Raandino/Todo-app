@@ -25,7 +25,10 @@ const RegisterForm = (props) => {
             </div>
             
             <div class="text-center" style="margin-top: 30px;">
-                <button type="submit" id="boton" class="btn btn-primary">Sign Up</button></div>
+                <button type="submit" id="boton" class="btn btn-primary">Sign Up</button>
+        
+                </div>
+                
         </form>
 
     )
@@ -72,7 +75,7 @@ const LoginPage = (props) => {
 
     return (
         <Fragment>
-            <h3 class="display-4 text-center" id="cuenta">Cuenta</h3>
+            <h3 class="display-4 text-center mt-5" id="cuenta">Cuenta</h3>
             <div id="login" class="mx-auto">
                 <div id="header" class="card-header">
                     <a onClick={goToLogin} href="#" class="active" id="login-box-link">Login</a>

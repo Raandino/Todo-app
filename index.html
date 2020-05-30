@@ -6,13 +6,40 @@
     <title>Todo App</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="/img/img-192.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div id="app">
-        
-    </div>
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-dark" id="sidebar-wrapper">
+          <div class="sidebar-heading" style="font-weight: bold;">Todo App</div>
+          <div class="list-group list-group-flush">
+            <a href="/" class="list-group-item list-group-item-action bg-dark">Tareas Pendientes</a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark">Tareas Realizadas</a>
+            <a href="/login" class="list-group-item list-group-item-action bg-dark">Login</a>
+
+          </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+    
+         
+          <div class="container-fluid">
+            <div id="app">
+      
+            </div>
+          </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    
+      </div>
+      <!-- /#wrapper -->
+   
 
 
     <script src="./js/index.js"></script>
