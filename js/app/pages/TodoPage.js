@@ -10,12 +10,11 @@ import { useModal } from '../hooks'
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
     console.log('use State')
-    console.log(useModal())
     const [showModal, openModal, closeModal] = useModal()
     const [form] = Form.useForm()
     
     const updateTodo = (indice, nuevoTodo) =>{
-        
+        console.log('Update Todo Indice',indice)
         const nuevoTodoList = [...todoItems]
         nuevoTodoList[indice] = nuevoTodo
         console.log('Nuevo Todo', nuevoTodo)

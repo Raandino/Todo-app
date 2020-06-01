@@ -4,7 +4,7 @@ import {useModal} from '../hooks'
 import Editar from './Editar'
 import TodoContext from '../context/TodoContext'
 
-const TodoItem = ( {todo} ) => {
+const TodoItem = ( {todo ,indice} ) => {
 
     const [showEdit, openEdit, closeEdit ] = useModal()
     
@@ -35,6 +35,7 @@ const TodoItem = ( {todo} ) => {
         showModal={showEdit}
         closeForm={closeEdit}
         todo={todo}
+        indice={indice}
         > </Editar>
           </div>
           </div> 

@@ -12,7 +12,7 @@ function TodoItems({todos=[]}) {
     <div className="container">
       <div className="row mt-4">
       {
-        todos.map(todo=><TodoItem todo={todo}></TodoItem>)
+        todos.map((todo, indice)=><TodoItem todo={todo} indice={indice}></TodoItem>)
       }
       </div>
     </div>
