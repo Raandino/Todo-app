@@ -15,13 +15,14 @@ const TodoItem = ( {todo} ) => {
 
     return ( 
         <div className="col-md-4 mt-4">
-        <div className="card" >
+        <div  id="todo"  className="card" >
           <div className="card-header" id="taskh">
          <h3>{  `${todo.todo}` }</h3> 
+         <span className="badge badge-pill badge-dark ml-2">{`${todo.date?.format('DD-MM-YYYY')}`}</span>
           </div>
-            <div className="card-body">
+            <div id="cuerpecito" className="card-body text-center">
           {
-            `${todo.date?.format('DD-MM-YYYY')} - ${todo.descripcion}`
+            `${todo.descripcion}`
           }
           </div>
 
