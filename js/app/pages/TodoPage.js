@@ -15,9 +15,15 @@ const TodoPage = (props) => {
     const [form] = Form.useForm()
     
     const updateTodo = (indice, nuevoTodo) =>{
-        const nuevoTodoList = todoItems
+        
+        const nuevoTodoList = [...todoItems]
         nuevoTodoList[indice] = nuevoTodo
+        console.log('Nuevo Todo', nuevoTodo)
+        console.log('Nuevo Todo List', nuevoTodoList)
+        console.log('Viejo Todo List', todoItems)
         setTodoItems (nuevoTodoList)
+        
+
 
     }
 
