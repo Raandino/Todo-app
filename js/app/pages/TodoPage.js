@@ -1,7 +1,7 @@
 import  { h, Fragment } from 'preact'
 import {useState} from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
-
+import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 
@@ -10,10 +10,23 @@ import { useModal } from '../hooks'
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
     console.log('use State')
-    console.log(useModal())
     const [showModal, openModal, closeModal] = useModal()
     const [form] = Form.useForm()
+    
+    const updateTodo = (indice, nuevoTodo) =>{
+        console.log('Update Todo Indice',indice)
+        const nuevoTodoList = [...todoItems]
+        nuevoTodoList[indice] = nuevoTodo
+        setTodoItems (nuevoTodoList)
+    }
 
+    const removeTodo = index => {
+        const nuevoTodoList = [...todoItems]
+        nuevoTodoList.splice(index,1 )
+
+        console.log('Nuevo Todo List Eliminat', nuevoTodoList)
+        setTodoItems(nuevoTodoList)
+    }
 
     const addTodo = e => {
         // Gets Raw Data from the Form
@@ -68,17 +81,15 @@ const TodoPage = (props) => {
                     <Input/>
                     </Form.Item> 
                     <Form.Item
-                label='Pendiente' 
-                name='pendiente' >
+                label='Estado' 
+                name='Estado' >
                 
-                    <Input type="radio" name="estado" value="notdone"/>
+                    <select  name="estado" value="notdone">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="realizada">Realizada</option>
+                    </select>
                     </Form.Item> 
-                    <Form.Item
-                label='Realizada' 
-                name='Realizada'>
-                    <Input type="radio" name="estado" value="done"/>
-                    </Form.Item> 
-    
+                    
     
                     
                     <Form.Item
@@ -90,7 +101,7 @@ const TodoPage = (props) => {
                 </Form>
         </Modal>
 
-        <TodoItems todos={todoItems}></TodoItems>
+        <TodoContext.Provider value={{todoList : todoItems, updateTodo, removeTodo}}><TodoItems todos={todoItems}></TodoItems></TodoContext.Provider>
 
        
            
@@ -100,5 +111,8 @@ const TodoPage = (props) => {
 
     )
 }
+
+
+
 
 export default TodoPage

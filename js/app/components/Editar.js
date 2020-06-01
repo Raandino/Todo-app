@@ -1,13 +1,16 @@
 import {h} from 'preact'
 import {Form, Modal, Button, Input, DatePicker} from 'antd'
+import TodoContext from '../context/TodoContext'
+import { useContext } from 'preact/hooks'
 
-
-const Editar = ({todo, closeForm, showModal}) =>{
-
+const Editar = ({todo,indice ,closeForm, showModal}) =>{
+    const context = useContext(TodoContext)
+    console.log(context)
     const [form] = Form.useForm()
     const editTodo = e =>{
-        console.log(form)
-    }
+        context.updateTodo (indice, form.getFieldsValue())
+        closeForm()
+    }   
         console.log()
       return(
   
@@ -57,7 +60,7 @@ const Editar = ({todo, closeForm, showModal}) =>{
                 </Form.Item>
             </Form>
     </Modal>
-  
+    
   
   
       )
