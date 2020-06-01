@@ -81,17 +81,15 @@ const TodoPage = (props) => {
                     <Input/>
                     </Form.Item> 
                     <Form.Item
-                label='Pendiente' 
-                name='pendiente' >
+                label='Estado' 
+                name='Estado' >
                 
-                    <Input type="radio" name="estado" value="notdone"/>
+                    <select  name="estado" value="notdone">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="realizada">Realizada</option>
+                    </select>
                     </Form.Item> 
-                    <Form.Item
-                label='Realizada' 
-                name='Realizada'>
-                    <Input type="radio" name="estado" value="done"/>
-                    </Form.Item> 
-    
+                    
     
                     
                     <Form.Item
