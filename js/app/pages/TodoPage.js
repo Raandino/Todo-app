@@ -1,7 +1,7 @@
 import  { h, Fragment } from 'preact'
 import {useState} from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
-
+import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 
@@ -13,7 +13,13 @@ const TodoPage = (props) => {
     console.log(useModal())
     const [showModal, openModal, closeModal] = useModal()
     const [form] = Form.useForm()
+    
+    const updateTodo = (indice, nuevoTodo) =>{
+        const nuevoTodoList = todoItems
+        nuevoTodoList[indice] = nuevoTodo
+        setTodoItems (nuevoTodoList)
 
+    }
 
     const addTodo = e => {
         // Gets Raw Data from the Form
@@ -90,7 +96,7 @@ const TodoPage = (props) => {
                 </Form>
         </Modal>
 
-        <TodoItems todos={todoItems}></TodoItems>
+        <TodoContext.Provider value={{todoList : todoItems, updateTodo}}><TodoItems todos={todoItems}></TodoItems></TodoContext.Provider>
 
        
            
@@ -100,5 +106,8 @@ const TodoPage = (props) => {
 
     )
 }
+
+
+
 
 export default TodoPage

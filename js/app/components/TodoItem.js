@@ -2,7 +2,7 @@ import {h } from 'preact'
 import { Modal } from 'antd'
 import {useModal} from '../hooks'
 import Editar from './Editar'
-
+import TodoContext from '../context/TodoContext'
 
 const TodoItem = ( {todo} ) => {
 
@@ -31,7 +31,7 @@ const TodoItem = ( {todo} ) => {
             
           <button id="editar" class="btn btn-primary mr-4 active" onClick={openEdit}>Editar</button>
           <button id="eliminar" class="btn btn-primary ml-4 active">Eliminar</button>
-        <Editar
+     <Editar
         showModal={showEdit}
         closeForm={closeEdit}
         todo={todo}
