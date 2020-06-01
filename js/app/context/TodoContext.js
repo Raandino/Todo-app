@@ -2,10 +2,8 @@ import { createContext } from "preact";
 
 const TodoContext = createContext ({
     todoList : [], 
-    updateTodo : newTodoList => {
-        
-
-    }
+    updateTodo : (index, todo) => {},
+    removeTodo : (index)=>{}
 })
 
 

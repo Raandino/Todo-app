@@ -17,13 +17,15 @@ const TodoPage = (props) => {
         console.log('Update Todo Indice',indice)
         const nuevoTodoList = [...todoItems]
         nuevoTodoList[indice] = nuevoTodo
-        console.log('Nuevo Todo', nuevoTodo)
-        console.log('Nuevo Todo List', nuevoTodoList)
-        console.log('Viejo Todo List', todoItems)
         setTodoItems (nuevoTodoList)
-        
+    }
 
+    const removeTodo = index => {
+        const nuevoTodoList = [...todoItems]
+        nuevoTodoList.splice(index,1 )
 
+        console.log('Nuevo Todo List Eliminat', nuevoTodoList)
+        setTodoItems(nuevoTodoList)
     }
 
     const addTodo = e => {
@@ -101,7 +103,7 @@ const TodoPage = (props) => {
                 </Form>
         </Modal>
 
-        <TodoContext.Provider value={{todoList : todoItems, updateTodo}}><TodoItems todos={todoItems}></TodoItems></TodoContext.Provider>
+        <TodoContext.Provider value={{todoList : todoItems, updateTodo, removeTodo}}><TodoItems todos={todoItems}></TodoItems></TodoContext.Provider>
 
        
            

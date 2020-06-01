@@ -2,6 +2,7 @@ import {h } from 'preact'
 import { Modal } from 'antd'
 import {useModal} from '../hooks'
 import Editar from './Editar'
+import EliminarTodo from './EliminarTodo'
 import TodoContext from '../context/TodoContext'
 
 const TodoItem = ( {todo ,indice} ) => {
@@ -11,7 +12,7 @@ const TodoItem = ( {todo ,indice} ) => {
     const [ showDelete, openDelete, closeDelete ] = useModal()
 
 
-    console.log('Edit Item Modal',showEdit)
+    console.log('Delet Item Modal',showEdit)
 
     return ( 
         <div className="col-md-4 mt-4">
@@ -30,13 +31,19 @@ const TodoItem = ( {todo ,indice} ) => {
             <div className="text-center">
             
           <button id="editar" class="btn btn-primary mr-4 active" onClick={openEdit}>Editar</button>
-          <button id="eliminar" class="btn btn-primary ml-4 active">Eliminar</button>
-     <Editar
-        showModal={showEdit}
-        closeForm={closeEdit}
-        todo={todo}
-        indice={indice}
-        > </Editar>
+          <button id="eliminar" class="btn btn-primary ml-4 active" onClick={openDelete}>Eliminar</button>
+          <Editar
+              showModal={showEdit}
+              closeForm={closeEdit}
+              todo={todo}
+              indice={indice}
+              > </Editar>
+            <EliminarTodo
+              showModal={showDelete}
+              closeModal={closeDelete}
+              indice={indice}
+            
+            ></EliminarTodo>
           </div>
           </div> 
           
