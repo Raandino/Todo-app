@@ -16,7 +16,7 @@ const TodoItem = ( {todo ,indice} ) => {
 
     return ( 
         <div className="col-md-4 mt-4">
-        <div  id="todo"  className="card" >
+        <div  id="todo1"  className="card" >
           <div className="card-header" id="taskh">
          <h3>{  `${todo.todo}` }</h3> 
          <span className="badge badge-pill badge-dark ml-2">{`${todo.date?.format('DD-MM-YYYY')}`}</span>
