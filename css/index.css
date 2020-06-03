@@ -107,6 +107,13 @@ button{
   flex-wrap: wrap;
 }
 
+#addtodo{
+  background-color: #17223b;
+  color: white;
+  height: 90px;
+  border-radius: 100%;
+  width: 90px;
+}
 
   #sidebar-wrapper a{
     color: white;
