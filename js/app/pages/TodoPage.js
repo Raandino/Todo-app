@@ -4,7 +4,7 @@ import { Input, Form, Button, Modal, DatePicker } from 'antd'
 import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
-
+import { Select } from 'antd'
 
 
 const TodoPage = (props) => {
@@ -28,11 +28,29 @@ const TodoPage = (props) => {
         setTodoItems(nuevoTodoList)
     }
 
+    fetch('https://pwa-postgre.herokuapp.com/api/1/todos') 
+    .then(res => res.json())
+    .then(res => {
+    
+        console.log(res)
+       
+    })
+    
+    
     const addTodo = e => {
+
         // Gets Raw Data from the Form
         // Transform the Date into usable format
        const todo = form.getFieldsValue()
-          
+       console.log(todo)
+       fetch('https://pwa-postgre.herokuapp.com/api/1/todos' ,{
+        method: 'POST',
+        body: JSON.stringify(todo)
+    }) 
+    .then(res => res.json())
+    .then(res => {
+       console.log("res", res)
+    })
        
        console.log(todo)
        // Adds the Todo Item to the array
@@ -44,7 +62,9 @@ const TodoPage = (props) => {
        closeModal()
        setTodoItems([...todoItems, todo])
     }
-    
+
+  
+   
    
     console.log('Todo', todoItems)
     console.log('Show Modal', showModal)
@@ -68,33 +88,37 @@ const TodoPage = (props) => {
                 <Button onClick={addTodo}>Submit</Button>
             ]}
             >
-                <Form form={form} onFinish={addTodo}>
+                <Form form={form} >
                 <Form.Item
                 label='Todo' 
-                name='todo'>
-                    <Input/>
+                name='todo'
+                >
+                    <Input />
                     </Form.Item> 
                     <Form.Item
                 label='Descripcion' 
-                name='descripcion'>
+                name='descripcion'
+    >
                 
                     <Input/>
                     </Form.Item> 
                     <Form.Item
                 label='Estado' 
-                name='Estado' >
+                name='status' 
+               >
                 
-                    <select  name="estado" value="notdone">
-                        <option value="pendiente">Pendiente</option>
-                        <option value="realizada">Realizada</option>
-                    </select>
+                <Select defaultValue="pendiente" style={{ width: 120 }} >
+                 <Option value="pendiente">Pendiente</Option>
+                  <Option value="realizado">Realizado</Option>
+
+                    </Select>
                     </Form.Item> 
                     
     
                     
                     <Form.Item
                         label='Date'
-                        name='date'
+                        name='endDate'
                     >
                         <DatePicker ></DatePicker>
                     </Form.Item>
@@ -103,7 +127,7 @@ const TodoPage = (props) => {
 
         <TodoContext.Provider value={{todoList : todoItems, updateTodo, removeTodo}}><TodoItems todos={todoItems}></TodoItems></TodoContext.Provider>
 
-       
+     
            
 
     </Fragment>
@@ -111,6 +135,7 @@ const TodoPage = (props) => {
 
     )
 }
+
 
 
 

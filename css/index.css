@@ -10,7 +10,7 @@ body{
     margin: 0;
     font-family: 'Poppins', sans-serif;
 
-
+    
     overflow-x: hidden;
 }
 
@@ -18,7 +18,7 @@ body{
     color: white;
     box-shadow: 5px 5px 5px 5px #141E30;
     width: 500px;
-  
+    background-color: #0f4c75;
     border-radius: 5%;
 }
 
@@ -33,7 +33,7 @@ body{
 
 #header{
     text-align: center;
-    background-color: #243B55;
+    background-color: #1b262c;
     border-radius: 2%;
 }
 
@@ -91,8 +91,12 @@ button{
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
     color: white;
-    background-color: #e05340!important;
+    background-color: #17223b;
     
+  }
+
+  .bg-pp{
+    background-color: #17223b;
   }
 
 #todotitle{
@@ -102,16 +106,7 @@ button{
   font-weight: 50;
   flex-wrap: wrap;
 }
-.cl{
-  border: 1px solid greenyellow;
-}
-.bg-pp{
-  background-color: #e05340!important;
-}
 
-.bg-pp:hover{
-  background-color: #e26757!important;
-}
 
   #sidebar-wrapper a{
     color: white;
@@ -121,23 +116,9 @@ button{
   #sidebar-wrapper .sidebar-heading {
     padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
-    border: 1px solid black;
+ 
   }
 
-  #todoimg{
-    display: flex;
-    justify-content: flex-end;
-    height:  50px;
-    width: 50px;
-    border-radius: 100%;
-    background-color: #4252af;  
-  }
-
-  #todoimg img{
-    width: 50px;
-    border-radius: 100%;
-    
-  }
   
   #sidebar-wrapper .list-group {
     width: 15rem;
@@ -169,7 +150,12 @@ button{
   }
   
   #page-content-wrapper{
-    background: #4252af /* fallback for old browsers */
-    /* background: linear-gradient(to right, rgb(103, 156, 3), rgb(138, 82, 10)); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #263859;  /* fallback for old browsers */
+    
+    
   }
+
+.list-group-item:hover, .list-group-item:active  {
+  background-color: #263859;
+}
 

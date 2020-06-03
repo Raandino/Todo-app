@@ -10,7 +10,7 @@ const TodoItem = ( {todo ,indice} ) => {
     const [showEdit, openEdit, closeEdit ] = useModal()
     
     const [ showDelete, openDelete, closeDelete ] = useModal()
-
+    
 
     console.log('Delet Item Modal',showEdit)
 
@@ -49,6 +49,7 @@ const TodoItem = ( {todo ,indice} ) => {
           
         </div>
         </div>
+     
     )
 
 }
