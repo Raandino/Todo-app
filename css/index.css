@@ -113,8 +113,22 @@ button{
   height: 90px;
   border-radius: 100%;
   width: 90px;
+  border: 1px solid white;
 }
 
+#eliminar{
+  background-color:rgb(180, 180, 180);
+  width: 100px;
+}
+
+#editar{
+  background-color: rgb(180, 180, 180);
+  width: 100px;
+}
+
+#todo{
+  background-color: #67a0d4;
+}
   #sidebar-wrapper a{
     color: white;
   }

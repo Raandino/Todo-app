@@ -30,8 +30,8 @@ const TodoItem = ( {todo ,indice} ) => {
           <div className="card-footer">
             <div className="text-center">
             
-          <button id="editar" class="btn btn-primary mr-4 active" onClick={openEdit}>Editar</button>
-          <button id="eliminar" class="btn btn-primary ml-4 active" onClick={openDelete}>Eliminar</button>
+          <button id="editar" class="btn btn-primary mx-4 active" onClick={openEdit}>Editar</button>
+          <button id="eliminar" class="btn btn-primary mx-4 active" onClick={openDelete}>Eliminar</button>
           <Editar
               showModal={showEdit}
               closeForm={closeEdit}
