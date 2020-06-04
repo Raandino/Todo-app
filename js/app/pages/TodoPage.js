@@ -110,19 +110,19 @@ const TodoPage = (props) => {
                         <Input />
                     </Form.Item>
                     <Form.Item
-                        label='Estado'
-                        name='status'
-                    >
+                label='Estado' 
+                name='status' 
+               >
+                
+                <Select initialValues="pendiente" style={{ width: 120 }} >
+                 <Option value="pendiente">Pendiente</Option>
+                  <Option value="realizado">Realizado</Option>
 
-                        <Select defaultValue="pendiente" style={{ width: 120 }} >
-                            <Option value="pendiente">Pendiente</Option>
-                            <Option value="realizado">Realizado</Option>
-
-                        </Select>
-                    </Form.Item>
-
-
-
+                    </Select>
+                    </Form.Item> 
+                    
+    
+                    
                     <Form.Item
                         label='Date'
                         name='endDate'
