@@ -21,7 +21,7 @@ const TodoItem = ( {todo ,indice} ) => {
 
     return ( 
         <div className="col-md-4 mt-4">
-        <div  id="todo"  className="card" >
+        <div  id="todo1"  className="card" >
           <div className="card-header" id="taskh">
          <h3>{  `${todo.todo}` }</h3> 
          <span className="badge badge-pill badge-dark ml-2">{date}</span>
@@ -35,8 +35,8 @@ const TodoItem = ( {todo ,indice} ) => {
           <div className="card-footer">
             <div className="text-center">
             
-          <button id="editar" class="btn btn-primary mr-4 active" onClick={openEdit}>Editar</button>
-          <button id="eliminar" class="btn btn-primary ml-4 active" onClick={openDelete}>Eliminar</button>
+          <button id="editar" class="btn btn-primary mx-4 active" onClick={openEdit}>Editar</button>
+          <button id="eliminar" class="btn btn-primary mx-4 active" onClick={openDelete}>Eliminar</button>
           <Editar
               showModal={showEdit}
               closeForm={closeEdit}
