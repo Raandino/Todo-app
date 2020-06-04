@@ -119,7 +119,7 @@ const TodoPage = (props) => {
                 name='status' 
                >
                 
-                <Select defaultValue="pendiente" style={{ width: 120 }} >
+                <Select initialValues="pendiente" style={{ width: 120 }} >
                  <Option value="pendiente">Pendiente</Option>
                   <Option value="realizado">Realizado</Option>
 
