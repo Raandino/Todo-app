@@ -5,7 +5,6 @@ import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 import { Select } from 'antd'
-import moment from 'moment'
 
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
@@ -36,12 +35,14 @@ const TodoPage = (props) => {
         
             setTodoItems(
              data
+         
            )
        
         })
       }, [])
       
-
+      
+    
     
     const addTodo = e => {
 

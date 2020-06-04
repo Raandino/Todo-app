@@ -5,7 +5,7 @@ import Editar from './Editar'
 import EliminarTodo from './EliminarTodo'
 import TodoContext from '../context/TodoContext'
 import { useEffect } from 'preact/hooks/src'
-
+import moment from 'moment'
 
 const TodoItem = ( {todo ,indice} ) => {
 
@@ -16,6 +16,7 @@ const TodoItem = ( {todo ,indice} ) => {
     
     console.log('Delet Item Modal',showEdit)
 
+    const date =   moment(todo.endDate).format('DD-MM-YYYY')
    
 
     return ( 
@@ -23,7 +24,7 @@ const TodoItem = ( {todo ,indice} ) => {
         <div  id="todo"  className="card" >
           <div className="card-header" id="taskh">
          <h3>{  `${todo.todo}` }</h3> 
-         <span className="badge badge-pill badge-dark ml-2">{`${todo.endDate?.format('DD-MM-YYYY')}`}</span>
+         <span className="badge badge-pill badge-dark ml-2">{date}</span>
           </div>
             <div id="cuerpecito" className="card-body text-center">
           {
