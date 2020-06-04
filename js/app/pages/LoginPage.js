@@ -1,5 +1,7 @@
 import { h, Fragment, Component } from 'preact'
-import { useState } from 'preact/hooks'
+import { useState, useContext } from 'preact/hooks'
+import UserContext from '../context/UserContext'
+
 import { Form, Input, Button } from 'antd'
 
 
@@ -83,7 +85,7 @@ const RegisterForm = (props) => {
 const LoginForm = (props) => {
 
     const [form] = Form.useForm()
-
+    const {logInUser} = useContext(UserContext)
     const handleSubmit = () => {
         const loginForm = form.getFieldsValue()
         console.log(loginForm)
@@ -95,7 +97,10 @@ const LoginForm = (props) => {
             },
             body: JSON.stringify(loginForm)
         }).then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {
+                console.log('user')
+                logInUser(res.user)
+            })
             .catch(err => console.log(err));
 
 

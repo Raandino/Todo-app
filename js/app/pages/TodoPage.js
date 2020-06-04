@@ -1,16 +1,18 @@
 import { h, Fragment } from 'preact'
-import { useState, useEffect } from 'preact/hooks'
+import { useState, useEffect, useContext } from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
 import TodoContext from '../context/TodoContext'
+import UserContext from '../context/UserContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 import { Select } from 'antd'
 
 // const API_ROUTE='localhost:3000'
-const API_ROUTE = 'https://pwa-postgre.heroukuapp.com'
+const API_ROUTE = 'https://pwa-postgre.herokuapp.com'
 
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
+    const {user} = useContext(UserContext)
     console.log('use State')
     const [showModal, openModal, closeModal] = useModal()
     const [form] = Form.useForm()
@@ -18,19 +20,42 @@ const TodoPage = (props) => {
     const updateTodo = (indice, nuevoTodo) => {
         console.log('Update Todo Indice', indice)
         const nuevoTodoList = [...todoItems]
-        nuevoTodoList[indice] = nuevoTodo
+        const updatedTodo = {
+            ...nuevoTodoList[indice],
+            ...nuevoTodo
+        }
+        nuevoTodoList[indice] = updatedTodo
         setTodoItems(nuevoTodoList)
+        console.log(updatedTodo)
+        fetch(`${API_ROUTE}/api/${user}/todos/${updatedTodo.id}`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedTodo)
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log("res", res)
+            })
     }
 
     const removeTodo = index => {
         const nuevoTodoList = [...todoItems]
-        nuevoTodoList.splice(index, 1)
+        const deleted = nuevoTodoList.splice(index, 1)[0]
         console.log('Nuevo Todo List Eliminat', nuevoTodoList)
         setTodoItems(nuevoTodoList)
+        fetch(`${API_ROUTE}/api/${user}/todos/${deleted.id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(res => {
+                console.log("res", res)
+            })
     }
 
     useEffect(() => {
-        fetch(`${API_ROUTE}/api/1/todos`)
+        fetch(`${API_ROUTE}/api/${user}/todos`)
             .then(res => res.json())
             .then((data) => {
                 setTodoItems(data)
@@ -45,7 +70,7 @@ const TodoPage = (props) => {
         // Transform the Date into usable format
         const todo = form.getFieldsValue()
         console.log(todo)
-        fetch(`${API_ROUTE}/api/1/todos`, {
+        fetch(`${API_ROUTE}/api/${user}/todos`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
