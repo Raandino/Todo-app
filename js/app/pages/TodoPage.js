@@ -5,7 +5,6 @@ import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 import { Select } from 'antd'
-import moment from 'moment'
 
 // const API_ROUTE='localhost:3000'
 const API_ROUTER='https://pwa-postgre.heroukuapp.com'
@@ -39,12 +38,14 @@ const TodoPage = (props) => {
         
             setTodoItems(
              data
+         
            )
        
         })
       }, [])
       
-
+      
+    
     
     const addTodo = e => {
 
@@ -87,7 +88,7 @@ const TodoPage = (props) => {
     return (
     <Fragment>
         <h1 className="text-center mt-2" style="color: white; font-weight:bold;"> Things To Do</h1>
-  <div className="text-center" >      <Button id="addtodo" onClick={openModal}> Add Todo</Button></div>
+  <div className="text-center" >      <Button id="addtodo" onClick={openModal}> Add </Button></div>
         
         <Modal id="modal" title='Add Form'
             visible={(()=> {
