@@ -1,11 +1,10 @@
 import  { h, Fragment } from 'preact'
-import {useState} from 'preact/hooks'
+import {useState, useEffect} from 'preact/hooks'
 import { Input, Form, Button, Modal, DatePicker } from 'antd'
 import TodoContext from '../context/TodoContext'
 import TodoItems from '../components/TodoItems'
 import { useModal } from '../hooks'
 import { Select } from 'antd'
-
 
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
@@ -28,13 +27,21 @@ const TodoPage = (props) => {
         setTodoItems(nuevoTodoList)
     }
 
-    fetch('https://pwa-postgre.herokuapp.com/api/1/todos') 
-    .then(res => res.json())
-    .then(res => {
+    useEffect (() => {
     
-        console.log(res)
+        fetch('https://pwa-postgre.herokuapp.com/api/1/todos') 
+        .then(res => res.json())
+        .then((data) => {
+        
+            setTodoItems(
+             data
+         
+           )
        
-    })
+        })
+      }, [])
+      
+      
     
     
     const addTodo = e => {
@@ -45,7 +52,12 @@ const TodoPage = (props) => {
        console.log(todo)
        fetch('https://pwa-postgre.herokuapp.com/api/1/todos' ,{
         method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
         body: JSON.stringify(todo)
+        
     }) 
     .then(res => res.json())
     .then(res => {

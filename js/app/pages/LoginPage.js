@@ -1,5 +1,6 @@
 import { h, Fragment, Component } from 'preact'
 import { useState } from 'preact/hooks'
+import { Form, Input, Button } from 'antd'
 //import './prueba';
 
 const RegisterForm = (props) => {
@@ -39,23 +40,51 @@ const RegisterForm = (props) => {
 
 
 
-const LoginForm = (props) => {
+const LoginForm =  (props) => {
+
+    const [form] = Form.useForm()
+
+    const handleSubmit = () => {
+        const loginForm = form.getFieldsValue()
+        console.log(loginForm)
+
+        fetch('http://localhost:3000/login',{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginForm)
+        }).then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+        
+
+    }
+
 
     return (
 
 
-        <form id="log" class="email-login">
-            <div class="form-group">
-                <label for="username">UserName</label>
-                <input type="email" class="form-control" id="username" aria-describedby="emailHelp"></input>
-            </div>
-            <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" class="form-control" id="pass"></input>
-            </div>
-            <div class="text-center" style="margin-top: 30px;">
-                <button type="submit" class="btn btn-primary" id="boton">Login</button></div>
-        </form>
+        <Form 
+            form={form}
+            onFinish={handleSubmit}
+
+        id="log" class="email-login">
+            <Form.Item class="form-group"
+                label="Username"
+                name="username"
+            >
+                <Input type="text" class="form-control" id="username" aria-describedby="emailHelp"></Input>
+            </Form.Item>
+            <Form.Item class="form-group"
+                label="Password"
+                name="password"
+            >
+                <Input.Password class="form-control" id="pass"></Input.Password>
+            </Form.Item>
+            <Form.Item class="text-center" >
+                <Button htmlType="submit" class="btn btn-primary" id="boton">Login</Button></Form.Item>
+        </Form>
 
     )
 

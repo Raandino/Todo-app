@@ -1,25 +1,30 @@
-import {h } from 'preact'
+import {h, Component } from 'preact'
 import { Modal } from 'antd'
 import {useModal} from '../hooks'
 import Editar from './Editar'
 import EliminarTodo from './EliminarTodo'
 import TodoContext from '../context/TodoContext'
+import { useEffect } from 'preact/hooks/src'
+import moment from 'moment'
 
 const TodoItem = ( {todo ,indice} ) => {
 
     const [showEdit, openEdit, closeEdit ] = useModal()
     
     const [ showDelete, openDelete, closeDelete ] = useModal()
-    
 
+    
     console.log('Delet Item Modal',showEdit)
+
+    const date =   moment(todo.endDate).format('DD-MM-YYYY')
+   
 
     return ( 
         <div className="col-md-4 mt-4">
         <div  id="todo1"  className="card" >
           <div className="card-header" id="taskh">
          <h3>{  `${todo.todo}` }</h3> 
-         <span className="badge badge-pill badge-dark ml-2">{`${todo.date?.format('DD-MM-YYYY')}`}</span>
+         <span className="badge badge-pill badge-dark ml-2">{date}</span>
           </div>
             <div id="cuerpecito" className="card-body text-center">
           {
