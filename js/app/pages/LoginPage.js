@@ -1,36 +1,76 @@
 import { h, Fragment, Component } from 'preact'
 import { useState } from 'preact/hooks'
 import { Form, Input, Button } from 'antd'
-//import './prueba';
+
+
+const API_ROUTE = 'https://pwa-postgre.herokuapp.com'
 
 const RegisterForm = (props) => {
+    const [form] = Form.useForm()
 
+    const handleRegister = values => {
+    
+        console.log('Submit')
+        console.log(values)
+    }
+
+    console.log('Form', form)
     return (
 
-        <form id="log" class="email-login">
-            <div class="form-group">
-                <label for="username">UserName</label>
-                <input type="text" class="form-control" id="username" aria-describedby="emailHelp"></input>
-            </div>
-            <div class="form-group">
-                <label for="mail">Email</label>
-                <input type="email" class="form-control" id="mail"></input>
-            </div>
-            <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" class="form-control" id="pass"></input>
-            </div>
-            <div class="form-group">
-                <label for="passConf">Confirm Password</label>
-                <input type="password" class="form-control" id="passConf"></input>
-            </div>
-            
-            <div class="text-center" style="margin-top: 30px;">
-                <button type="submit" id="boton" class="btn btn-primary">Create</button>
-        
-                </div>
-                
-        </form>
+        <Form form={form} 
+        id="log" 
+        class="email-login"
+        onFinish={handleRegister}
+        scrollToFirstError
+        >
+            <Form.Item //class="form-group"
+                label="Username"
+                name="username"
+            >
+                <Input type="text" class="form-control" id="username" aria-describedby="emailHelp"></Input>
+            </Form.Item>
+            <Form.Item //class="form-group"
+                label="E-mail"
+                name="mail"
+            >
+                <Input type="email" class="form-control" id="mail"></Input>
+            </Form.Item>
+            <Form.Item //class="form-group"
+                label="Password"
+                name="password"
+            >
+                <Input.Password type="password" class="form-control" id="pass"></Input.Password>
+            </Form.Item>
+            <Form.Item //class="form-group"
+                label="Confirm Password"
+                name="confirm"
+                dependencies={['password']}
+                hasFeedback
+                rules={[
+                    {
+                      required: true,
+                      message: 'Please confirm your password!',
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(rule, value) {
+                        console.log("Validating")
+                        if (!value || getFieldValue('password') === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject('The two passwords that you entered do not match!');
+                      },
+                    }),
+                  ]}
+            >
+                <Input.Password type="password" class="form-control" id="passConf"></Input.Password>
+            </Form.Item>
+
+            <Form.Item class="text-center" >
+                <Button htmlType="submit" id="boton" class="btn btn-primary">Create</Button>
+
+            </Form.Item>
+
+        </Form>
 
     )
 
@@ -40,7 +80,7 @@ const RegisterForm = (props) => {
 
 
 
-const LoginForm =  (props) => {
+const LoginForm = (props) => {
 
     const [form] = Form.useForm()
 
@@ -48,16 +88,16 @@ const LoginForm =  (props) => {
         const loginForm = form.getFieldsValue()
         console.log(loginForm)
 
-        fetch('https://pwa-postgre.herokuapp.com/login',{
+        fetch(`${API_ROUTE}/login`, {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(loginForm)
         }).then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-        
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+
 
     }
 
@@ -65,11 +105,11 @@ const LoginForm =  (props) => {
     return (
 
 
-        <Form 
+        <Form
             form={form}
             onFinish={handleSubmit}
 
-        id="log" class="email-login">
+            id="log" class="email-login">
             <Form.Item class="form-group"
                 label="Username"
                 name="username"
@@ -108,10 +148,10 @@ const LoginPage = (props) => {
             <div id="login" class="mx-auto">
                 <div id="header" class="card-header">
                     <a onClick={goToLogin} href="#" class="active" id="login-box-link">Log in</a>
-                    <a onClick={goToRegister} href="#"  class="active"  id="signup-box-link">Register</a>
+                    <a onClick={goToRegister} href="#" class="active" id="signup-box-link">Register</a>
                 </div>
 
-                {transitionRL ? <LoginForm /> : <RegisterForm/>}
+                {transitionRL ? <LoginForm /> : <RegisterForm />}
 
             </div>
         </Fragment>
