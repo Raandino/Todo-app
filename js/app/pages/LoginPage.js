@@ -48,7 +48,7 @@ const LoginForm =  (props) => {
         const loginForm = form.getFieldsValue()
         console.log(loginForm)
 
-        fetch('http://localhost:3000/login',{
+        fetch('https://pwa-postgre.herokuapp.com/login',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',

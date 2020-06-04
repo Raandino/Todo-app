@@ -7,6 +7,9 @@ import { useModal } from '../hooks'
 import { Select } from 'antd'
 import moment from 'moment'
 
+// const API_ROUTE='localhost:3000'
+const API_ROUTER='https://pwa-postgre.heroukuapp.com'
+
 const TodoPage = (props) => {
     const [todoItems, setTodoItems] = useState([])
     console.log('use State')
@@ -30,7 +33,7 @@ const TodoPage = (props) => {
 
     useEffect (() => {
     
-        fetch('https://pwa-postgre.herokuapp.com/api/1/todos') 
+        fetch(`${API_ROUTE}/api/1/todos`) 
         .then(res => res.json())
         .then((data) => {
         
@@ -49,7 +52,7 @@ const TodoPage = (props) => {
         // Transform the Date into usable format
        const todo = form.getFieldsValue()
        console.log(todo)
-       fetch('https://pwa-postgre.herokuapp.com/api/1/todos' ,{
+       fetch(`${API_ROUTE}/api/1/todos` ,{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
