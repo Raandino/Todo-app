@@ -105,7 +105,7 @@ const TodoPage = (props) => {
     return (
         <Fragment>
             <h1 className="text-center mt-2" style="color: white; font-weight:bold;"> Things To Do</h1>
-            <div className="text-center" >      <Button id="addtodo" onClick={openModal}> Add </Button></div>
+            <div className="text-center" >      <Button id="addtodo" onClick={openModal}> ADD </Button></div>
 
             <Modal id="modal" title='Add Form'
                 visible={(() => {

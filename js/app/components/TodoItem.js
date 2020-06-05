@@ -20,40 +20,23 @@ const TodoItem = ( {todo ,indice} ) => {
    
 
     return ( 
-        <div className="col-md-4 mt-4">
-        <div  id="todo1"  className="card" >
-          <div className="card-header" id="taskh">
-         <h3>{  `${todo.todo}` }</h3> 
-         <span className="badge badge-pill badge-dark ml-2">{date}</span>
+        // <div className="col-md-4 mt-4">
+        <div  id="todo1"   class="card todo  " onClick={openEdit}>     
+          <div id="cuerpecito" className="  blockquote card-body text-center">
+            <div  class="h3">{  `${todo.todo}` }</div>
+            <div  class=" h6   my-3 ">{date}</div>
+            <hr class="my-2"></hr>
+                {
+                  `${todo.descripcion}`
+                } 
+            <hr class="my-2"></hr>
+            {/* <button id="editar" class="  mt-2 btn btn-warning   my-1  mx-4 active" onClick={openEdit}>Editar</button>
+            <button id="eliminar" class="mt-2 btn btn-warning   my-1  mx-4 active" onClick={openDelete}>Eliminar</button> */}
+            <Editar showModal={showEdit} closeForm={closeEdit} todo={todo} indice={indice}> </Editar>
+            <EliminarTodo showModal={showDelete} closeModal={closeDelete}indice={indice} ></EliminarTodo>
           </div>
-            <div id="cuerpecito" className="card-body text-center">
-          {
-            `${todo.descripcion}`
-          }
-          </div>
-
-          <div className="card-footer">
-            <div className="text-center">
-            
-          <button id="editar" class="btn btn-primary mx-4 active" onClick={openEdit}>Editar</button>
-          <button id="eliminar" class="btn btn-primary mx-4 active" onClick={openDelete}>Eliminar</button>
-          <Editar
-              showModal={showEdit}
-              closeForm={closeEdit}
-              todo={todo}
-              indice={indice}
-              > </Editar>
-            <EliminarTodo
-              showModal={showDelete}
-              closeModal={closeDelete}
-              indice={indice}
-            
-            ></EliminarTodo>
-          </div>
-          </div> 
-          
         </div>
-        </div>
+        // </div>
      
     )
 

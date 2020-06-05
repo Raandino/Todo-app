@@ -2,8 +2,13 @@ import {h} from 'preact'
 import {Form, Modal, Button, Input, DatePicker} from 'antd'
 import TodoContext from '../context/TodoContext'
 import { useContext } from 'preact/hooks'
+import EliminarTodo from './EliminarTodo'
+import {useModal} from '../hooks'
+
+
 
 const Editar = ({todo,indice ,closeForm, showModal}) =>{
+    const [ showDelete, openDelete, closeDelete ] = useModal()
     const context = useContext(TodoContext)
     console.log(context)
     const [form] = Form.useForm()
@@ -14,14 +19,21 @@ const Editar = ({todo,indice ,closeForm, showModal}) =>{
         console.log()
       return(
   
-        <Modal id="modal" title='Ay Lmao'
+        <Modal id="modal" title='Edit Task'
         visible={showModal}
         onCancel={closeForm}
         footer={[
             <Button onClick={closeForm} >
                 Cancel
             </Button>,
-            <Button onClick={editTodo}>Submit</Button>
+            <Button onClick={editTodo}>
+                Submit
+            </Button>,
+            <Button onClick={openDelete}>
+                Eliminar
+            </Button>,
+            <EliminarTodo showModal={showDelete} closeModal={closeDelete}indice={indice} ></EliminarTodo>
+
         ]}
         >
             <Form form={form}
